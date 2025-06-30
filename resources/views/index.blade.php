@@ -6,9 +6,11 @@
 
 @section('content')
 <div class="todo__alert">
-  <div class="todo__alert--success">
-    Todoを作成しました
-  </div>
+    @if(session('message'))
+    <div class="todo__alert--success">
+        {{ session('message') }}
+    </div>
+    @endif
 </div>
 
 <div class="todo__content">
