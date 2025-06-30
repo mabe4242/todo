@@ -12,4 +12,10 @@ class CategoryController extends Controller
 
         return view('category', compact('categories'));
     }
+
+    public function store(Request $request){
+        Category::create($request->only(['name']));
+
+        return redirect('/categories')->with('message', 'カテゴリを作成しました。');
+    }
 }
