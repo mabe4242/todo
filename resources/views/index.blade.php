@@ -38,11 +38,14 @@
     <div class="section__title">
         <h2>Todo検索</h2>
     </div>
-    <form class="search-form">
+    <form class="search-form" action="/todos/search" method="get">
+        @csrf
         <div class="search-form__item">
-            <input class="search-form__item-input" type="text" />
-            <select class="search-form__item-select">
-                <option value="">カテゴリ</option>
+            <input class="search-form__item-input" type="text" name="keyword" value="{{ old('keyword') }}">
+            <select class="search-form__item-select" name="category_id">
+                @foreach ($categories as $category)
+                    <option value="{{ $category['id'] }}">{{ $category['name'] }}</option>
+                @endforeach
             </select>
         </div>
     <div class="search-form__button">
